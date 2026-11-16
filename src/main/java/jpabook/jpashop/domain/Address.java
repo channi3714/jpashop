@@ -10,4 +10,15 @@ public class Address {
     private String city;
     private String street;
     private String zipcode;
+
+    //setter를 없애고 기본 생성자를 protected로 설정해 값 변경을 막는다.
+    protected Address() {
+
+    }
+
+    public Address(String city, String street, String zipcode) {
+        this.city = city;
+        this.street = street;
+        this.zipcode = zipcode;
+    }
 }
