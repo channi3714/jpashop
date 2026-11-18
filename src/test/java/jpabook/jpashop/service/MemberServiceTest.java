@@ -40,7 +40,12 @@ class MemberServiceTest {
 
         //when
         memberService.join(member1);
-//        memberService.join(member2);  //여기서 예외가 터져야함.
+//        try{
+//            memberService.join(member2); //여기서 예외가 터져야함.
+//
+//        } catch(IllegalStateException e){
+//            return;
+//        }
 
         //then
         //IllegalStateException 예외가 발생하지 않으면 테스트 실패
