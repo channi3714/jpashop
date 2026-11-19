@@ -22,7 +22,16 @@ public class OrderItem {
     @JoinColumn(name = "order_id")
     private Order order;
 
-    private Long orderPrice;
+    private int orderPrice;
 
-    private Long count;
+    private int count;
+
+    //==비즈니스 로직==//
+    public void cancel() {
+        getItem().addStock(count);
+    }
+
+    public int getTotalPrice() {
+        return getOrderPrice() * getCount();
+    }
 }
