@@ -2,12 +2,15 @@ package jpabook.jpashop.domain;
 
 import jakarta.persistence.*;
 import jpabook.jpashop.domain.item.Item;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
     @Id
     @GeneratedValue
@@ -49,8 +52,8 @@ public class OrderItem {
         return getOrderPrice() * getCount();
     }
 
-    //createOrderItem으로만 부르게 하도록 기본 생성자를 막아버림.
-    protected OrderItem() {
-
-    }
+    //createOrderItem으로만 부르게 하도록 기본 생성자를 막아버림. @NoArgsConstructor protected옵션이랑 같음
+//    protected OrderItem() {
+//
+//    }
 }
