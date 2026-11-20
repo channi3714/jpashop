@@ -48,4 +48,9 @@ public class OrderItem {
     public int getTotalPrice() {
         return getOrderPrice() * getCount();
     }
+
+    //createOrderItem으로만 부르게 하도록 기본 생성자를 막아버림.
+    protected OrderItem() {
+
+    }
 }

@@ -35,6 +35,7 @@ public class OrderService {
 
         //주문상품 생성
         OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);
+//        OrderItem orderItem1 = new OrderItem(); //엔티티에서 기본생성자 protected로 막아놓음 위의 메서드로만 생성가능하도록.
 
         //주문 생성
         Order order = Order.createOrder(member, delivery, orderItem);
