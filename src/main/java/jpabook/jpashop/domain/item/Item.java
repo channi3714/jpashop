@@ -22,7 +22,8 @@ public class Item {
 
     private String name;
 
-    private Long stockQuantity;
+    private int stockQuantity;
+    private int price;
 
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
