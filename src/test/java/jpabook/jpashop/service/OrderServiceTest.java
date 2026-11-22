@@ -8,6 +8,7 @@ import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderStatus;
 import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
+import jpabook.jpashop.exception.NotEnoughStockException;
 import jpabook.jpashop.repository.MemberRepository;
 import jpabook.jpashop.repository.OrderRepository;
 import org.junit.jupiter.api.Test;
@@ -34,7 +35,7 @@ class OrderServiceTest {
 
         //given
         Member member = createMember();
-        Item item = createBook("시골JPA", 10000, 10);
+        Item item = createBook("시골 JPA", 10000, 10);
         int orderCount = 2;
 
         //when
@@ -52,7 +53,17 @@ class OrderServiceTest {
 
     @Test
     public void 상품주문_재고수량초과() {
-        //...
+        //given
+        Member member = createMember();
+        Item item = createBook("시골 JPA", 10000, 10); //이름, 가격, 재고
+
+        int orderCount = 11;
+
+        //when, then
+        assertThrows(
+                NotEnoughStockException.class,
+                () -> orderService.Order(member.getId(), item.getId(), orderCount)
+        );
     }
     @Test
     public void 주문취소() {
