@@ -21,7 +21,7 @@ public class OrderRepository {
         return em.find(Order.class, id);
     }
 
-    // 요즘은 이방법 안씀
+    // 요즘은 이 방법 안씀 JPA Criteria 로 동적 쿼리 작성
     public List<Order> findAll(OrderSearch orderSearch) {
         return em.createQuery("select o from Order o join o.member m" +
                 "where o.status = :status" + "and m.name like :name", Order.class)
