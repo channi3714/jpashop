@@ -22,12 +22,12 @@ public class ItemService {
     }
 
     @Transactional
-    public Item updateItem(Long itemId, Book param) { //merge랑 비슷 단 머지는 null 값도 업데이트 해버림. 그래서 머지 보다 이렇게 직접 변경감지(더티체킹)을 하는게 나은 방식
+    public void updateItem(Long itemId, String name, int price, int stockQuantity) { //만약 이게 파라미터가 너무 많다 싶으면 디티오를 만들어서 사용할 것. 거기서 게터세터로
+        //merge랑 비슷 단 머지는 null 값도 업데이트 해버림. 그래서 머지 보다 이렇게 직접 변경감지(더티체킹)을 하는게 나은 방식
         Item findItem = itemRepository.findOne(itemId);
-        findItem.setPrice(param.getPrice());
-        findItem.setName(param.getName());
-        findItem.setStockQuantity(param.getStockQuantity());
-        return findItem;
+        findItem.setName(name);
+        findItem.setPrice(price);
+        findItem.setStockQuantity(stockQuantity);
     }
 
     public List<Item> findAll() {
